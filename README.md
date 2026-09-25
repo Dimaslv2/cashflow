@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💰 Cashflow
 
-## Getting Started
+Modern personal finance management app. Track income, expenses, and manage budgets with an intuitive dashboard.
 
-First, run the development server:
+## ✨ Features
+
+- **📊 Dashboard** - Real-time overview of income, expenses, and financial summary
+- **💳 Transaction Management** - Add, edit, and categorize transactions
+- **🏷️ Smart Categories** - Organize income and expenses by custom categories
+- **📈 Visual Analytics** - Charts and graphs for spending patterns
+- **🔐 Secure Authentication** - User registration and login with encrypted passwords
+- **👤 Personal Workspace** - Each user has isolated financial data
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 16, React 19, TypeScript
+- **Styling**: Tailwind CSS 4, shadcn/ui components
+- **Backend**: Next.js API routes
+- **Database**: MySQL with Prisma ORM
+- **Authentication**: NextAuth.js
+- **UI Components**: shadcn/ui, Lucide icons
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+- MySQL database
+
+### Installation
 
 ```bash
+# Clone repository
+git clone https://github.com/Dimaslv2/cashflow.git
+cd cashflow
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env.local
+# Edit .env.local with your database URL and auth secrets
+
+# Setup database
+npx prisma migrate dev
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Run production server
+npm run lint     # Run ESLint
+```
 
-## Learn More
+## 📊 Database Schema
 
-To learn more about Next.js, take a look at the following resources:
+### Users
+- Email authentication with bcrypt hashing
+- Personal workspace isolation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Categories
+- Income and expense categorization
+- Custom colors per category
+- User-owned with cascade delete
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Transactions
+- Amount, type (income/expense), date
+- Category and user relationships
+- Timestamped records
 
-## Deploy on Vercel
+## 🔗 API Routes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `POST /api/auth/register` - Create account
+- `POST /api/auth/[...nextauth]` - Authentication
+- `GET /api/dashboard` - Financial summary
+- `GET|POST /api/transactions` - Transaction CRUD
+- `GET|POST /api/categories` - Category management
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 UI Components
+
+Built with shadcn/ui and Tailwind CSS:
+- Button, Card, Input, Label
+- Select, Dialog components
+- Responsive design patterns
+- Dark/light mode ready
+
+## 📦 Project Structure
+
+```
+cashflow/
+├── app/              # Next.js app directory
+│   ├── api/         # API routes
+│   ├── dashboard/   # Dashboard page
+│   ├── login/       # Auth pages
+│   └── register/
+├── components/      # React components
+│   └── ui/         # shadcn/ui components
+├── lib/            # Utilities and helpers
+├── prisma/         # Database schema
+└── public/         # Static assets
+```
+
+## 🔒 Security
+
+- Passwords hashed with bcryptjs
+- Environment variables for secrets
+- NextAuth.js session management
+- Database relationships with cascading deletes
+
+## 📄 License
+
+MIT
+
+## 👥 Contributors
+
+- [@Dimaslv2](https://github.com/Dimaslv2)
+
+---
+
+**Start managing your finances today!** 🚀
